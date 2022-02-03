@@ -97,6 +97,10 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    figaro (1.2.0)
+      thor (>= 0.14.0, < 2)
+    fixer_currency (3.4.3)
+      money (~> 6.7)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.9.1)
@@ -120,6 +124,8 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
+    money (6.16.0)
+      i18n (>= 0.6.4, <= 2)
     msgpack (1.4.4)
     net-imap (0.2.3)
       digest
@@ -246,8 +252,11 @@ DEPENDENCIES
   cssbundling-rails
   debug
   factory_bot_rails
+  figaro
+  fixer_currency
   jbuilder
   jsbundling-rails
+  money
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.1)

@@ -49,6 +49,11 @@ gem 'cssbundling-rails'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+gem 'fixer_currency'
+gem 'money'
+
+gem "figaro"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
