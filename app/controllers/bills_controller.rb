@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BillsController < ApplicationController
   before_action :set_bill, :set_currencies, only: %i[receipt download]
 

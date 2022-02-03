@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :category do
-    name { "MyString" }
-    items { "MyText" }
+    name { 'MyString' }
+    items { 'MyText' }
   end
 end

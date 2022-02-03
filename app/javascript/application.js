@@ -7,12 +7,12 @@ import "./src/jquery.js"
 import "jquery-ui"
 
 
-$('select.select-currency').on('focus', function(){
+$(document).on('focus', 'select.select-currency', function(){
   var selected = this.selectedOptions[0].value
   localStorage.setItem("current", selected)
 });
 
-$('select.select-currency').on('click', function(){
+$(document).on('change', 'select.select-currency', function(){
   var selected = this.selectedOptions[0].value
   const url=`${window.location.href}.js`;
   $.ajax({
