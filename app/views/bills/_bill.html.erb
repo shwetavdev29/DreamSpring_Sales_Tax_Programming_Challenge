@@ -3,7 +3,7 @@
     <h4 class="font-weight-bold mt-3 py-2 pl-3">
       Receipt
       <span class="small">
-        <%= link_to 'Download', download_bill_path(id: @bill.id, to_currency: @to, from_currency: @from), class:"back-link lead", target: 'blank' %>
+        <%= link_to 'Download', download_bill_path(id: @bill.id, to_currency: @to), class:"back-link lead", target: 'blank' %>
       </span>
     </h4>
     <div class="row mx-0 pt-2">
@@ -16,7 +16,7 @@
       <div class="col-xl-3 col-md-3 col-sm-3 col-4">
         <div class="d-flex align-items-center">
           <h6 class="font-weight-bold mb-0">Price</h6>
-          <%= select_tag "category", options_for_select(['EUR', 'INR','USD']), class:"custom-select font-weight-bold ml-3 select-currency form-select"%>
+          <%= select_tag "category", options_for_select(['EUR', 'INR','USD'], @to), class:"custom-select font-weight-bold ml-3 select-currency form-select"%>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
             <label class="mb-0" for="desciption"><%= item.description %></label>
           </div>
           <div class="col-xl-3 col-md-3 col-sm-3 col-4 mb-0">
-            <label class="mb-0" for="price"> <%= convert(item.price, @from, @to) %></label>
+            <label class="mb-0" for="price"> <%= convert(item.price, @to) %></label>
           </div>
         </div>
       <% end %>
@@ -40,7 +40,7 @@
         <label class="w-100 mb-0" for="desciption">Total Tax</label>
       </div>
       <div class="col-xl-3 col-md-3 col-sm-3 col-4 mb-0">
-        <label class="mb-0" for="desciption"><%= convert(@bill.total_tax, @from, @to)%></label>
+        <label class="mb-0" for="desciption"><%= convert(@bill.total_tax, @to)%></label>
       </div>
     </div>
     <div class="row mx-0 py-1">
@@ -48,7 +48,7 @@
         <label class="w-100 mb-0" for="desciption">Total</label>
       </div>
       <div class="col-xl-3 col-md-3 col-sm-3 col-4 mb-0">
-        <label class="mb-0" for="desciption"><%= convert(@bill.total, @from, @to)%></label>
+        <label class="mb-0" for="desciption"><%= convert(@bill.total, @to)%></label>
       </div>
     </div>
     <div class="row mx-0 py-2 mt-3">

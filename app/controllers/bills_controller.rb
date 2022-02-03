@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class BillsController < ApplicationController
-  before_action :set_bill, :set_currencies, only: %i[receipt download]
+  before_action :set_bill, :set_currency, only: %i[receipt download]
 
   def new
     @bill = Bill.new
@@ -39,8 +39,7 @@ class BillsController < ApplicationController
     @bill = Bill.find(params[:id])
   end
 
-  def set_currencies
+  def set_currency
     @to = params[:to_currency] || 'EUR'
-    @from = params[:from_currency] || 'EUR'
   end
 end

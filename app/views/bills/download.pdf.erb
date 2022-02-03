@@ -16,16 +16,16 @@
           <tr>
             <td><%= item.quantity %></td>
             <td><%= item.description %></td>
-            <td><%= convert(item.price, @from, @to) %></td>
+            <td><%= convert(item.price, @to) %></td>
           </tr>
         <% end %>
         <tr>                
           <td colspan="2" class="text-right"><b>Total Tax</b></td>
-          <td><b><%= @bill.total_tax %></b></td>        
+          <td><b><%= convert(@bill.total_tax, @to) %></b></td>        
         </tr>
         <tr>                
           <td colspan="2" class="text-right"><b>Total</b></td>
-          <td><b><%= @bill.total %></b></td>        
+          <td><b><%= convert(@bill.total, @to) %></b></td>        
         </tr>
       </tbody>
     </table>
