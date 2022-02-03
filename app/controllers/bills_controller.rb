@@ -13,8 +13,6 @@ class BillsController < ApplicationController
 
     if @bill.persisted?
       redirect_to receipt_bill_path(@bill)
-    else
-      render 'new'
     end
   end
 

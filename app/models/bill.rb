@@ -3,7 +3,7 @@
 class Bill < ApplicationRecord
   has_many :items
 
-  accepts_nested_attributes_for :items, reject_if: :all_blank
+  accepts_nested_attributes_for :items, reject_if: :all_blank, reject_if: proc {|a| a['price'].blank? || a['quantity'].blank? || a['description'].blank?}
 
   before_validation :calculate_totals
 
@@ -19,6 +19,6 @@ class Bill < ApplicationRecord
       tax += item.import_tax if item.import?
     end
     self.total_tax = tax
-    self.total = items.map(&:total_price).sum + tax
+    self.total = items.map(&:total_price).sum
   end
 end
