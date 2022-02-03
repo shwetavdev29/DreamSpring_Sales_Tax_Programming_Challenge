@@ -1,4 +1,6 @@
 class BillsController < ApplicationController
+  before_action :set_bill, :set_currencies, only: %i[receipt download]
+
   def new
     @bill = Bill.new
     5.times { @bill.items.build }
@@ -16,11 +18,29 @@ class BillsController < ApplicationController
 
   def receipt; end
 
+  def download
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'download'
+      end
+    end
+  end
+
   private
 
   def bill_params
     params.require(:bill).permit(
       items_attributes: %i[quantity price description]
     )
+  end
+
+  def set_bill
+    @bill = Bill.find(params[:id])
+  end
+
+  def set_currencies
+    @to = params[:to_currency] || 'EUR'
+    @from = params[:from_currency] || 'EUR'
   end
 end

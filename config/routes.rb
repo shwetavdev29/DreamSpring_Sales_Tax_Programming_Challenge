@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :bills do
     member do
       get :receipt
+      get :download, format: 'pdf'
     end
   end
   resources :categories

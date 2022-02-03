@@ -1,0 +1,33 @@
+<div class="receipt-download">
+  <div class="table-container">
+    <h2>Sales Tax Calculator</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Oty</th>
+          <th>Item Description</th>
+          <th class="price-width">Price
+            <select><option><%= @to%></option></select>
+          </th>           
+        </tr>
+        </thead>
+        <tbody>
+        <% @bill.items.each do |item| %>
+          <tr>
+            <td><%= item.quantity %></td>
+            <td><%= item.description %></td>
+            <td><%= convert(item.price, @from, @to) %></td>
+          </tr>
+        <% end %>
+        <tr>                
+          <td colspan="2" class="text-right"><b>Total Tax</b></td>
+          <td><b><%= @bill.total_tax %></b></td>        
+        </tr>
+        <tr>                
+          <td colspan="2" class="text-right"><b>Total</b></td>
+          <td><b><%= @bill.total %></b></td>        
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
