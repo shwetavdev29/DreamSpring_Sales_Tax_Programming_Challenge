@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="col-xl-7 col-lg-7 col-md-10 col-sm-12 col-12 m-auto pt-3 items-info ">
+    <h4 class="font-weight-bold mt-3 py-2 pl-3">
+      Receipt
+    </h4>
+    <div class="row mx-0 pt-2">
+      <div class="col-xl-2 col-md-2 col-sm-2 col-2">
+        <h6 class="font-weight-bold">Qty</h6>
+      </div>
+      <div class="col-xl-7 col-md-7 col-sm-7 col-6">
+        <h6 class="font-weight-bold">Item Description</h6>
+      </div>
+      <div class="col-xl-3 col-md-3 col-sm-3 col-4">
+        <div class="d-flex align-items-center">
+          <h6 class="font-weight-bold mb-0">Price</h6>
+          <%= select_tag "category", options_for_select(['EUR', 'INR','USD']), class:"custom-select font-weight-bold ml-3 select-currency"%>
+        </div>    
+      </div>
+    </div>
+    <div class="py-3 border-top border-bottom bw-2">
+      <% @bill.items.each do |item| %>
+        <div class="row mx-0 py-1">
+          <div class="col-xl-2 col-md-2 col-sm-2 col-2 mb-0">
+            <label class="mb-0" for="quantity"><%= item.quantity %></label>
+          </div>
+          <div class="col-xl-7 col-md-7 col-sm-7 col-6 mb-0">
+            <label class="mb-0" for="desciption"><%= item.description %></label>
+          </div>
+          <div class="col-xl-3 col-md-3 col-sm-3 col-4 mb-0">
+            <label class="mb-0" for="price"> <%= convert(item.price, @from, @to) %></label>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="row mx-0 py-1">
+      <div class="col-xl-9 col-md-9 col-sm-9 col-8 mb-0 text-right">
+        <label class="w-100 mb-0" for="desciption">Total Tax</label>
+      </div>
+      <div class="col-xl-3 col-md-3 col-sm-3 col-4 mb-0">
+        <label class="mb-0" for="desciption"><%= convert(@bill.total_tax, @from, @to)%></label>
+      </div>
+    </div>
+    <div class="row mx-0 py-1">
+      <div class="col-xl-9 col-md-9 col-sm-9 col-8 mb-0 text-right">
+        <label class="w-100 mb-0" for="desciption">Total</label>
+      </div>
+      <div class="col-xl-3 col-md-3 col-sm-3 col-4 mb-0">
+        <label class="mb-0" for="desciption"><%= convert(@bill.total, @from, @to)%></label>
+      </div>
+    </div>
+    <div class="row mx-0 py-2 mt-3">
+      <%= link_to 'Back', new_bill_path %>
+    </div>
+  </div>
+</div>
