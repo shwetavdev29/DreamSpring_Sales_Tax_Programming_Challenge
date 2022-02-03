@@ -1,16 +1,13 @@
 <div class="row mx-0 py-2" id="first_item">
   <%= f.fields_for :items do |item| %>
-    <div class="col-xl-2 col-md-2 col-sm-2 col-2 pl-0 input-group mb-3">
+    <div class="col-xl-2 col-md-2 col-sm-2 col-2 pl-0 mb-3">
       <%= item.number_field :quantity, class: "form-control" %>
     </div>
-    <div class="col-xl-6 col-md-6 col-sm-6 col-6 input-group mb-3">
+    <div class="col-xl-7 col-md-7 col-sm-7 col-7 mb-3">
       <%= item.text_field :description, placeholder: "Description", class: "form-control" %>
     </div>
-    <div class="col-xl-3 col-md-3 col-sm-3 col-4 pr-0 input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text bg-white border-right-0">EUR</span>
-      </div>
-      <%= item.number_field :price, class: "form-control border-left-0 pl-0" %>
+    <div class="col-xl-3 col-md-3 col-sm-3 col-3 pr-0 mb-3">
+      <%= item.number_field :price, class: "form-control border-left-0 pl-0", placeholder: "EUR" %>
     </div>
   <% end %>
 </div>
